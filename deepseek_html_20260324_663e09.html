@@ -1,0 +1,601 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>Elena Rossi | creative developer</title>
+  <!-- Font Awesome 6 (free icons) -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: system-ui, 'Segoe UI', 'Inter', -apple-system, BlinkMacSystemFont, 'Roboto', sans-serif;
+      background: #fafcff;
+      color: #111827;
+      line-height: 1.5;
+      scroll-behavior: smooth;
+    }
+
+    /* container utility */
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    /* header / navigation */
+    header {
+      background: rgba(255, 255, 255, 0.92);
+      backdrop-filter: blur(12px);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+      padding: 1rem 0;
+    }
+
+    .nav-container {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+
+    .logo {
+      font-size: 1.7rem;
+      font-weight: 700;
+      background: linear-gradient(135deg, #2563eb, #7c3aed);
+      background-clip: text;
+      -webkit-background-clip: text;
+      color: transparent;
+      letter-spacing: -0.3px;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+      flex-wrap: wrap;
+      list-style: none;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      font-weight: 500;
+      color: #1f2937;
+      transition: color 0.2s;
+      font-size: 1rem;
+    }
+
+    .nav-links a:hover {
+      color: #2563eb;
+    }
+
+    /* buttons & sections */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background-color: #2563eb;
+      color: white;
+      padding: 0.7rem 1.6rem;
+      border-radius: 40px;
+      text-decoration: none;
+      font-weight: 500;
+      transition: all 0.2s ease;
+      border: none;
+      cursor: pointer;
+      font-size: 0.95rem;
+    }
+
+    .btn-outline {
+      background: transparent;
+      border: 1px solid #2563eb;
+      color: #2563eb;
+    }
+
+    .btn-outline:hover {
+      background: #2563eb;
+      color: white;
+    }
+
+    .btn:hover {
+      background-color: #1d4ed8;
+      transform: translateY(-2px);
+      box-shadow: 0 10px 20px -8px rgba(37, 99, 235, 0.3);
+    }
+
+    /* hero */
+    .hero {
+      padding: 5rem 0 4rem;
+    }
+
+    .hero-grid {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 2rem;
+    }
+
+    .hero-content {
+      flex: 1;
+      min-width: 260px;
+    }
+
+    .hero-badge {
+      background: #e0e7ff;
+      color: #1e40af;
+      padding: 0.2rem 1rem;
+      border-radius: 30px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      display: inline-block;
+      margin-bottom: 1.2rem;
+    }
+
+    .hero-content h1 {
+      font-size: 3.2rem;
+      font-weight: 800;
+      line-height: 1.2;
+      margin-bottom: 1rem;
+      background: linear-gradient(to right, #111827, #2563eb);
+      background-clip: text;
+      -webkit-background-clip: text;
+      color: transparent;
+    }
+
+    .hero-content p {
+      font-size: 1.2rem;
+      color: #4b5563;
+      max-width: 550px;
+      margin-bottom: 2rem;
+    }
+
+    .hero-actions {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .hero-avatar {
+      flex: 0.7;
+      min-width: 220px;
+      text-align: center;
+    }
+
+    .avatar-circle {
+      background: linear-gradient(145deg, #d9e6ff, #ffffff);
+      width: 240px;
+      height: 240px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto;
+      box-shadow: 0 20px 35px -12px rgba(0, 0, 0, 0.1);
+      border: 3px solid white;
+    }
+
+    .avatar-circle i {
+      font-size: 7rem;
+      color: #2563eb;
+    }
+
+    /* section titles */
+    .section-title {
+      font-size: 2.2rem;
+      font-weight: 700;
+      margin-bottom: 2rem;
+      letter-spacing: -0.02em;
+      position: relative;
+      display: inline-block;
+    }
+    .section-title:after {
+      content: '';
+      position: absolute;
+      bottom: -12px;
+      left: 0;
+      width: 60%;
+      height: 4px;
+      background: #2563eb;
+      border-radius: 4px;
+    }
+
+    /* about */
+    .about {
+      padding: 4rem 0;
+      background: #ffffff;
+    }
+    .about-text {
+      max-width: 800px;
+      font-size: 1.1rem;
+      color: #2d3a4a;
+      margin-top: 1rem;
+      line-height: 1.6;
+    }
+    .skills {
+      margin-top: 2rem;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.8rem;
+    }
+    .skill-tag {
+      background: #eef2ff;
+      padding: 0.4rem 1.2rem;
+      border-radius: 40px;
+      font-size: 0.9rem;
+      font-weight: 500;
+      color: #1e3a8a;
+    }
+
+    /* projects grid */
+    .projects {
+      padding: 4rem 0;
+      background: #f8fafc;
+    }
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 2rem;
+      margin-top: 2rem;
+    }
+    .project-card {
+      background: white;
+      border-radius: 24px;
+      overflow: hidden;
+      transition: all 0.25s ease;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.02), 0 2px 6px rgba(0,0,0,0.05);
+      border: 1px solid rgba(0,0,0,0.04);
+    }
+    .project-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 20px 30px -12px rgba(0, 0, 0, 0.12);
+      border-color: #cbd5e1;
+    }
+    .project-img {
+      background: linear-gradient(135deg, #2563eb20, #7c3aed20);
+      height: 180px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 3.2rem;
+      color: #2563eb;
+    }
+    .project-info {
+      padding: 1.5rem;
+    }
+    .project-info h3 {
+      font-size: 1.4rem;
+      margin-bottom: 0.5rem;
+    }
+    .project-info p {
+      color: #4b5563;
+      margin: 0.5rem 0 1rem;
+      font-size: 0.95rem;
+    }
+    .tech-stack {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin: 1rem 0;
+    }
+    .tech {
+      background: #eef2ff;
+      padding: 0.2rem 0.8rem;
+      border-radius: 30px;
+      font-size: 0.75rem;
+      font-weight: 500;
+    }
+    .project-link {
+      text-decoration: none;
+      font-weight: 600;
+      color: #2563eb;
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      margin-top: 8px;
+    }
+    .project-link i {
+      transition: transform 0.2s;
+    }
+    .project-link:hover i {
+      transform: translateX(4px);
+    }
+
+    /* contact */
+    .contact {
+      padding: 4rem 0;
+      background: white;
+    }
+    .contact-content {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 3rem;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .contact-text {
+      flex: 1;
+    }
+    .contact-text p {
+      font-size: 1.1rem;
+      margin-bottom: 1.5rem;
+      color: #2d3a4a;
+    }
+    .social-links {
+      display: flex;
+      gap: 1.5rem;
+      margin-top: 1rem;
+    }
+    .social-links a {
+      background: #f1f5f9;
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.5rem;
+      color: #1e293b;
+      transition: all 0.2s;
+    }
+    .social-links a:hover {
+      background: #2563eb;
+      color: white;
+      transform: scale(1.05);
+    }
+    .contact-email {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      background: #f8fafc;
+      padding: 0.8rem 1.5rem;
+      border-radius: 60px;
+      border: 1px solid #e2e8f0;
+      width: fit-content;
+    }
+    .contact-email i {
+      font-size: 1.3rem;
+      color: #2563eb;
+    }
+    .contact-email span {
+      font-weight: 500;
+    }
+
+    /* footer */
+    footer {
+      background: #111827;
+      color: #cbd5e1;
+      padding: 2rem 0;
+      text-align: center;
+      font-size: 0.9rem;
+    }
+
+    /* responsive */
+    @media (max-width: 768px) {
+      .hero-content h1 {
+        font-size: 2.4rem;
+      }
+      .nav-container {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+      .nav-links {
+        gap: 1.2rem;
+      }
+      .hero-grid {
+        flex-direction: column-reverse;
+        text-align: center;
+      }
+      .hero-actions {
+        justify-content: center;
+      }
+      .section-title:after {
+        left: 50%;
+        transform: translateX(-50%);
+        width: 80px;
+      }
+      .section-title {
+        text-align: center;
+        display: block;
+      }
+      .about-text {
+        text-align: center;
+      }
+      .skills {
+        justify-content: center;
+      }
+      .contact-content {
+        flex-direction: column;
+        text-align: center;
+      }
+      .contact-email {
+        margin: 0 auto;
+      }
+      .social-links {
+        justify-content: center;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="container nav-container">
+      <div class="logo">E.R.</div>
+      <ul class="nav-links">
+        <li><a href="#home">Home</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#projects">Work</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </div>
+  </header>
+
+  <main>
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+      <div class="container hero-grid">
+        <div class="hero-content">
+          <span class="hero-badge"><i class="fas fa-code"></i> available for work</span>
+          <h1>crafting digital <br>experiences</h1>
+          <p>Hi, I'm Elena Rossi — front-end architect & creative developer. I build minimal, fast, and human-centered web apps.</p>
+          <div class="hero-actions">
+            <a href="#projects" class="btn"><i class="fas fa-arrow-down"></i> see projects</a>
+            <a href="#contact" class="btn btn-outline"><i class="fas fa-paper-plane"></i> contact me</a>
+          </div>
+        </div>
+        <div class="hero-avatar">
+          <div class="avatar-circle">
+            <i class="fas fa-laptop-code"></i>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="about">
+      <div class="container">
+        <h2 class="section-title">About me</h2>
+        <div class="about-text">
+          <p>I'm Elena, a developer with 5+ years of experience turning ideas into interactive realities. I focus on clean UI, accessibility, and performant code. Currently based in Berlin, working with global teams and open-source communities.</p>
+          <p>When I'm not coding, I contribute to design systems, sketch illustrations, and write technical articles. I believe the best interfaces feel invisible — intuitive, inclusive, and delightful.</p>
+        </div>
+        <div class="skills">
+          <span class="skill-tag">React</span>
+          <span class="skill-tag">Vue.js</span>
+          <span class="skill-tag">TypeScript</span>
+          <span class="skill-tag">Tailwind CSS</span>
+          <span class="skill-tag">Figma</span>
+          <span class="skill-tag">Node.js</span>
+          <span class="skill-tag">GSAP</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="projects">
+      <div class="container">
+        <h2 class="section-title">selected projects</h2>
+        <div class="projects-grid">
+          <!-- Project 1 -->
+          <div class="project-card">
+            <div class="project-img">
+              <i class="fas fa-cloud-moon"></i>
+            </div>
+            <div class="project-info">
+              <h3>WeatherFlow</h3>
+              <p>Interactive weather dashboard with real-time API, animated forecasts, and dark mode. Optimized for all devices.</p>
+              <div class="tech-stack">
+                <span class="tech">React</span>
+                <span class="tech">OpenWeather API</span>
+                <span class="tech">Chart.js</span>
+              </div>
+              <a href="#" class="project-link">Live demo <i class="fas fa-arrow-right"></i></a>
+            </div>
+          </div>
+          <!-- Project 2 -->
+          <div class="project-card">
+            <div class="project-img">
+              <i class="fas fa-store"></i>
+            </div>
+            <div class="project-info">
+              <h3>Urban Goods</h3>
+              <p>Minimalist e‑commerce concept with cart, product filtering, and smooth checkout flow. Fully responsive.</p>
+              <div class="tech-stack">
+                <span class="tech">Vue 3</span>
+                <span class="tech">Pinia</span>
+                <span class="tech">SCSS</span>
+              </div>
+              <a href="#" class="project-link">Case study <i class="fas fa-arrow-right"></i></a>
+            </div>
+          </div>
+          <!-- Project 3 -->
+          <div class="project-card">
+            <div class="project-img">
+              <i class="fas fa-palette"></i>
+            </div>
+            <div class="project-info">
+              <h3>ArtSpace</h3>
+              <p>Digital gallery platform for emerging artists. Includes drag & drop curation and immersive lightbox viewer.</p>
+              <div class="tech-stack">
+                <span class="tech">Next.js</span>
+                <span class="tech">Framer Motion</span>
+                <span class="tech">Sanity</span>
+              </div>
+              <a href="#" class="project-link">Explore project <i class="fas fa-arrow-right"></i></a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact">
+      <div class="container contact-content">
+        <div class="contact-text">
+          <h2 class="section-title" style="margin-bottom: 1rem;">Let’s connect</h2>
+          <p>I'm currently open for freelance work, collaborations, or just a nice chat about tech and design. Drop a message anytime.</p>
+          <div class="contact-email">
+            <i class="fas fa-envelope"></i>
+            <span>elena.rossi@creativ.dev</span>
+          </div>
+          <div class="social-links">
+            <a href="#" aria-label="GitHub"><i class="fab fa-github"></i></a>
+            <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+            <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+            <a href="#" aria-label="Dribbble"><i class="fab fa-dribbble"></i></a>
+          </div>
+        </div>
+        <!-- simple decorative quote or placeholder -->
+        <div style="font-size: 1rem; background: #f1f5f9; padding: 1.5rem; border-radius: 2rem; max-width: 300px;">
+          <i class="fas fa-quote-left" style="color: #2563eb; margin-right: 8px;"></i> Design is not just what it looks like, but how it works.
+          <div style="margin-top: 12px;">— Elena Rossi</div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">
+      <p>© 2025 Elena Rossi — built with <i class="fas fa-heart" style="color: #f97316;"></i> for the web</p>
+      <p style="margin-top: 0.5rem; font-size: 0.8rem;">⚡ clean code · fully responsive · ready to deploy</p>
+    </div>
+  </footer>
+
+  <!-- optional small script for active nav highlight on scroll -->
+  <script>
+    (function() {
+      const sections = document.querySelectorAll("section");
+      const navLinks = document.querySelectorAll(".nav-links a");
+      
+      function updateActiveLink() {
+        let current = "";
+        const scrollPos = window.scrollY + 150;
+        sections.forEach(section => {
+          const sectionTop = section.offsetTop;
+          const sectionHeight = section.clientHeight;
+          if (scrollPos >= sectionTop && scrollPos < sectionTop + sectionHeight) {
+            current = section.getAttribute("id");
+          }
+        });
+        navLinks.forEach(link => {
+          link.style.color = "#1f2937";
+          link.style.fontWeight = "500";
+          if (link.getAttribute("href") === `#${current}`) {
+            link.style.color = "#2563eb";
+            link.style.fontWeight = "600";
+          }
+        });
+      }
+      window.addEventListener("scroll", updateActiveLink);
+      window.addEventListener("load", updateActiveLink);
+    })();
+  </script>
+</body>
+</html>
